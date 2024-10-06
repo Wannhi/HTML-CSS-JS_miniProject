@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.list {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: perspective(2000px);
+    
+}
+.items img {
+    object-fit: cover;
+    width: 150px;
+    height: 200px;
+    margin-left: 5px;
+}
+.list .items {
+    transition: .5s;
+    filter: brightness(0);
+}
+.list .items:hover {
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+.list .items:hover + * {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+.list .items:hover + * + * {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+.list .items:hover + * + * + * {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);
+}
+.list .items:has(+ *:hover) {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+.list .items:has(+ * + *:hover) {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+.list .items:has(+ * + * + *:hover) {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(-10deg);
+}
